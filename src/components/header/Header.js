@@ -5,7 +5,6 @@ import {
   achievementSection,
   bigProjects,
   blogSection,
-  greeting,
   resumeSection,
   skillsSection,
   talkSection,
