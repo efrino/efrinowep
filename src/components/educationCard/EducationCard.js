@@ -20,7 +20,8 @@ export default function EducationCard({school}) {
   if (!school.logo)
     console.error(`Image of ${school.name} is missing in education section`);
   return (
-    <div>
+    <div className="education-timeline-item">
+      <div className="timeline-node"></div>
       <Fade left duration={1000}>
         <div className="education-card">
           {school.logo && (
@@ -64,9 +65,6 @@ export default function EducationCard({school}) {
           </div>
         </div>
       </Fade>
-      <Slide left duration={2000}>
-        <div className="education-card-border"></div>
-      </Slide>
     </div>
   );
 }

@@ -1,156 +1,186 @@
 @import "../../_globalColor";
 
-.experience-card {
+%bp-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  background-color: $lightBackground2;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, $accent, transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+  }
+
+  &:hover {
+    border-color: var(--border-accent);
+    box-shadow: 0 10px 30px -15px rgba(30, 144, 255, 0.25);
+    transform: translateY(-4px);
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.experience-card {
+  @extend %bp-card;
+  position: relative;
+  overflow: hidden;
 }
 
 .experience-card-dark {
+  @extend %bp-card;
   position: relative;
-  background-color: $darkBackground;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-}
-
-.experience-card:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+  overflow: hidden;
 }
 
 .experience-banner {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 150%;
-  background: $experienceCardBannerLG;
-  border-radius: 10px 10px 0px 0px;
-  -webkit-filter: blur(0px);
-  -moz-filter: blur(0px);
-  -o-filter: blur(0px);
-  -ms-filter: blur(0px);
-  filter: blur(0px);
-  height: 11rem;
+  background-color: rgba(30, 144, 255, 0.03);
+  border-bottom: 1px solid var(--border);
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.experience-blurred_div {
-  position: absolute;
-  background: $experienceCardBlurredDivLG;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-  height: 11rem;
-  top: 0;
-  left: 0;
-  width: 100%;
-  border-radius: 10px 10px 0px 0px;
+.terminal-header {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .close { background-color: #ff3b30; }
+  .minimize { background-color: #ffcc00; }
+  .maximize { background-color: #28cd41; }
+  
+  .terminal-title {
+    margin-left: auto;
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
 }
 
 .experience-div-company {
-  position: absolute;
-  background: transparent;
-  height: 9rem;
-  top: 0;
-  left: 0;
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
 }
 
 .experience-text-company {
-  text-align: center;
-  padding: 1.5rem;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  padding: 0;
   margin: 0;
-  color: $lightBackground1;
-  font-size: 25px;
-  text-align: center;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .experience-roundedimg {
-  position: absolute;
+  position: static;
+  width: 2.4rem;
+  height: 2.4rem;
   object-fit: cover;
-  left: 0;
-  right: 0;
-  top: 7rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: 8rem;
-  height: 8rem;
-  box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
-  border-radius: 50%;
-}
-
-.experience-text-role {
-  text-align: center;
-  color: $textColor;
-  font-weight: 700;
-  font-size: 25px;
-  margin: 0px;
-  padding-top: 1.5rem;
-  line-height: normal;
-}
-.dark-mode-text {
-  color: $textColorDark !important;
-}
-.experience-text-date {
-  text-align: center;
-  color: $textColor;
-  font-size: 20px;
-  margin: 0px;
-  padding-top: 1rem;
-  font-weight: 600;
-}
-
-.experience-text-desc {
-  text-align: center;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  box-shadow: none;
+  flex-shrink: 0;
 }
 
 .experience-text-details {
   padding: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
-/* Media Query */
+.experience-text-role {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: left;
+  padding-top: 0;
+  margin: 0 0 0.4rem;
+  line-height: 1.3;
+}
 
-@media (max-width: 1380px) {
-  .experience-text-role {
-    padding-top: 0.5rem;
-    font-size: 22px;
-  }
-  .experience-text-company {
-    font-size: 22px;
-  }
-  .experience-text-date {
-    font-size: 18px;
-  }
-  .experience-roundedimg {
-    width: 6.5rem;
-    height: 6.5rem;
+.dark-mode-text {
+  color: var(--text-primary) !important;
+}
+
+.experience-text-date {
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: $accent;
+  text-align: left;
+  padding-top: 0;
+  margin: 0 0 1rem;
+  font-weight: 400;
+
+
+}
+
+.status-pulse {
+  display: inline-block;
+  width: 8px; height: 8px;
+  background-color: #28cd41;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px #28cd41;
+  animation: pulse-status 2s infinite;
+}
+
+@keyframes pulse-status {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.experience-text-desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  text-align: left;
+  margin-bottom: 0.75rem;
+}
+
+.experience-text-details ul {
+  padding-left: 1.1rem;
+  margin: 0;
+}
+
+.experience-text-details ul li {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+
+  &::marker {
+    color: $accent;
+    content: "▸ ";
   }
 }
 
 @media (max-width: 768px) {
-  .experience-text-role {
-    font-size: 22px;
-  }
-  .experience-text-company {
-    font-size: 22px;
-  }
-  .experience-text-date {
-    font-size: 18px;
-  }
-  .experience-text-desc {
-    font-size: 16px;
-  }
+  .experience-text-role   { font-size: 1rem; }
+  .experience-text-date   { font-size: 0.7rem; }
+  .experience-text-desc   { font-size: 0.85rem; }
+  .experience-text-details ul li { font-size: 0.82rem; }
 }

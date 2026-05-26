@@ -1,47 +1,49 @@
 @import "../../_globalColor";
 
 .main-button {
-  background-color: $buttonColor;
-  border: solid 1px $buttonColor;
-  color: $textColorDark;
-  font-weight: 700;
-  width: max-content;
-  padding: 13px 22px;
-  margin-right: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  border-radius: 6px;
-  text-align: center;
   text-decoration: none;
-  display: block;
-  margin-top: 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out 0s;
+  cursor: none;
+  border: 1px solid $accent;
+  background-color: transparent;
+  color: $accent;
+  border-radius: 2px;
+  margin-right: 1rem;
+  margin-top: 0;
+  width: max-content;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    background-color: $accent;
+    color: var(--bg-primary);
+    box-shadow: 0 0 20px $accent-glow;
+    transform: none;
+  }
 }
-.main-button:hover {
-  background-color: $darkBoxShadow2;
-  color: $buttonColor;
-  transition: all 0.3s ease 0s;
-  transform: translateY(-3px);
-}
+
 .project-button {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: flex-start;
+  margin-top: 1.25rem;
+  gap: 0.75rem;
 }
+
 .project-button > .main-button {
   margin-right: 0 !important;
 }
-/* Media Query */
+
 @media (max-width: 768px) {
   .main-button {
-    font-size: 0.938rem;
-    padding: 12px 18px;
-    margin-right: 0px;
-  }
-}
-@media (max-width: 320px) {
-  .main-button {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    padding: 0.65rem 1.2rem;
+    margin-right: 0;
   }
 }

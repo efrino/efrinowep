@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext, Suspense, lazy} from "react";
 import "./Project.scss";
 import Button from "../../components/button/Button";
-import {openSource, socialMediaLinks} from "../../portfolio";
+import {socialMediaLinks} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 import Loading from "../../containers/loading/Loading";
 export default function Projects() {
@@ -41,12 +41,12 @@ export default function Projects() {
   }
   if (
     !(typeof repo === "string" || repo instanceof String) &&
-    openSource.display
+    repo.length > 0
   ) {
     return (
       <Suspense fallback={renderLoader()}>
-        <div className="main" id="opensource">
-          <h1 className="project-title">Open Source Projects</h1>
+        <div className="main projects-container" id="">
+          <h1 className="project-title">Open Source Repositories</h1>
           <div className="repo-cards-div-main">
             {repo.map((v, i) => {
               if (!v) {

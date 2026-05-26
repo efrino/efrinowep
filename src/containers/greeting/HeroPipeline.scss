@@ -1,0 +1,264 @@
+@import "../../_globalColor";
+
+/* ─────────────────────────────────
+   Hero Pipeline SVG Styles
+   Technical Blueprint — Animated
+───────────────────────────────── */
+
+.hero-pipeline-wrap {
+  width: 100%;
+  max-width: 500px;
+  user-select: none;
+}
+
+.hero-pipeline-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* ── Source nodes ── */
+.hp-source {
+  // anime.js sets initial opacity; CSS handles hover
+}
+
+.hp-node-rect {
+  fill: var(--bg-card);
+  stroke: var(--border);
+  stroke-width: 1;
+  transition: stroke 0.2s ease, fill 0.2s ease;
+
+  .hp-source:hover & {
+    stroke: $accent;
+    fill: $accent-dim;
+  }
+}
+
+.hp-node-label {
+  fill: var(--text-primary);
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-anchor: middle;
+  dominant-baseline: auto;
+  transition: fill 0.2s ease;
+
+  .hp-source:hover & {
+    fill: $accent;
+  }
+}
+
+.hp-node-sub {
+  fill: var(--text-muted);
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 5.5px;
+  letter-spacing: 0.06em;
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+.hp-status-dot {
+  fill: $green-active;
+  animation: hp-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hp-pulse {
+  0%, 100% { opacity: 1; r: 2.5px; }
+  50%       { opacity: 0.5; r: 2px; }
+}
+
+/* ── Connectors ── */
+.hp-conn {
+  fill: none;
+  stroke: rgba(30, 144, 255, 0.45);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 3;
+  animation: hp-dash 1.8s linear infinite;
+}
+
+.hp-out-conn {
+  fill: none;
+  stroke: rgba(30, 144, 255, 0.6);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 3;
+  animation: hp-dash 1.2s linear infinite;
+}
+
+@keyframes hp-dash {
+  to { stroke-dashoffset: -16; }
+}
+
+.hp-arrowhead {
+  fill: rgba(30, 144, 255, 0.6);
+}
+
+/* ── Data particles ── */
+.hp-particle {
+  fill: #00E676; /* Green for source data */
+  opacity: 0.9;
+}
+
+.hp-particle--bright {
+  fill: #FFD700; /* Gold for output */
+  opacity: 1;
+}
+
+/* ── Pipeline processor ── */
+.hp-led-normal {
+  fill: rgba(30, 144, 255, 0.4);
+  transition: fill 0.3s ease;
+}
+
+.hp-led-alert {
+  fill: #ff3b30;
+  filter: drop-shadow(0 0 4px #ff3b30);
+  animation: hp-blink 0.3s steps(2, start) infinite;
+}
+
+@keyframes hp-blink {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.hp-proc {
+  transform-origin: center;
+}
+
+.hp-proc-glow {
+  fill: none;
+  stroke: $accent;
+  stroke-width: 1;
+  opacity: 0.15;
+  animation: hp-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes hp-glow-pulse {
+  0%, 100% { opacity: 0.12; }
+  50%       { opacity: 0.28; }
+}
+
+.hp-proc-rect {
+  fill: var(--bg-card);
+  stroke: $accent;
+  stroke-width: 1.5;
+}
+
+.hp-corner {
+  stroke: $accent;
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.hp-proc-label {
+  fill: $accent;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+.hp-proc-step {
+  fill: var(--text-primary);
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+.hp-proc-sub {
+  fill: var(--text-muted);
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 5.5px;
+  letter-spacing: 0.2em;
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+/* Progress bar inside pipeline */
+.hp-track {
+  fill: var(--border);
+}
+
+.hp-fill {
+  fill: $accent;
+  animation: hp-progress 9.6s linear infinite; // 16 steps × 600ms
+  transform-origin: left center;
+  transform-box: fill-box;
+}
+
+@keyframes hp-progress {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+/* ── Output node ── */
+.hp-output-rect {
+  fill: $accent-dim;
+  stroke: $accent;
+  stroke-width: 1.5;
+  animation: hp-output-pulse 3s ease-in-out infinite;
+}
+
+@keyframes hp-output-pulse {
+  0%, 100% { stroke-opacity: 0.7; }
+  50%       { stroke-opacity: 1; }
+}
+
+.hp-output-label {
+  fill: $accent;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+.hp-output-sub {
+  fill: var(--text-secondary);
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 5.5px;
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+.hp-output-title {
+  fill: $accent;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-anchor: middle;
+  dominant-baseline: auto;
+}
+
+/* ── Blueprint frame ── */
+.hp-frame-line {
+  stroke: rgba(30, 144, 255, 0.1);
+  stroke-width: 1;
+}
+
+.hp-frame-label {
+  fill: var(--text-muted);
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 5px;
+  letter-spacing: 0.1em;
+  dominant-baseline: auto;
+}
+
+.hp-frame-right {
+  text-anchor: end;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-pipeline-wrap {
+    max-width: 100%;
+  }
+}

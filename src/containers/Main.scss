@@ -1,7 +1,14 @@
 @import "../_globalColor";
 
 .dark-mode {
-  background-color: $darkBackground;
-  color: white;
-  transition: "0.1s";
+  background-color: $bg-primary;
+  color: $text-primary;
+  transition: background-color 0.15s ease;
+}
+
+// Section wrapper — consistent padding for all sections
+.main-section {
+  width: 90%;
+  margin: 0 auto;
+  padding: 3.5rem 10px;
 }

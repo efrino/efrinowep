@@ -1,90 +1,131 @@
-/* Change colors in this file to style to your needs on a global level. 
-Certain colors are used for different and multiply types of elements. 
-For greater control over colors visit each components .scss file. */
+/* ============================================================
+   TECHNICAL BLUEPRINT — Design System
+   Portfolio: Efrino Wahyu Eko Pambudi
+   ============================================================ */
 
-// button colors
-$buttonColor: #55198b;
-$buttonHover: #8c43ce;
-$topButtonHover: #000;
+/* ---- CSS Custom Properties (runtime — responds to data-theme on <html>) ---- */
 
-// text colors light theme
-$titleColor: #000000;
-$textColor: #000000;
-$subTitle: #868e96;
-$cardSubtitle: #666666;
-$talkCardSubTitle: #7f8287;
-$blogCardTitleColor: #262626;
+/* Default = Dark mode (Technical Blueprint) */
+:root {
+  --bg-primary:     #080f1a;
+  --bg-secondary:   #0b1525;
+  --bg-card:        #0e1d2e;
+  --bg-card-hover:  #122338;
+  --text-primary:   #d4e0ef;
+  --text-secondary: #7a96b2;
+  --text-muted:     #3a5570;
+  --border:         #1a2e45;
+  --border-accent:  rgba(30, 144, 255, 0.4);
+  --grid-line:      rgba(30, 144, 255, 0.035);
+}
 
-// text color dark theme
-$textColorDark: #ffffff;
+/* Light mode — Blueprint Light (white paper + navy ink + blue accent) */
+[data-theme="light"] {
+  --bg-primary:     #f5f8fc;
+  --bg-secondary:   #eaf0f8;
+  --bg-card:        #ffffff;
+  --bg-card-hover:  #f0f4f8;
+  --text-primary:   #0d1b2a;
+  --text-secondary: #3d5a73;
+  --text-muted:     #8aaccb;
+  --border:         #c0d4e8;
+  --border-accent:  rgba(30, 144, 255, 0.35);
+  --grid-line:      rgba(30, 144, 255, 0.07);
+}
 
-// toggle switch colors
-$toggleCheck: #2196f3;
-$toggleSwitchSliderBG: #ccc;
+/* ---- SCSS Variables (compile-time, theme-independent values only) ---- */
 
-// githubRepo specific colors
-$githubRepoCardLanguageColorBG: #0000ff;
-$githubRepoCardColor: rgb(88, 96, 105);
-$githubRepoCardRepoCardStatsColor: rgb(106, 115, 125);
-$githubRepoCardRepoNameColor: rgb(36, 41, 46);
-$githubProfileCardLocationTS: #ffebcd;
-$githubProfileCardBorder: #6c63ff;
+// --- Accent (same in both themes — always blue) ---
+$accent:            #1e90ff;
+$accent-hover:      #4da8ff;
+$accent-dim:        rgba(30, 144, 255, 0.12);
+$accent-glow:       rgba(30, 144, 255, 0.25);
 
-// light background colors
-$lightBackground1: #fff;
-$lightBackground2: rgb(255, 255, 255);
-$lightBackground3: #f5f2f4;
-$blogCardContainerColor: #586069;
-// dark background colors
-$darkBackground: #171c28;
+// --- Status ---
+$green-active:      #00c896;
+$green-dim:         rgba(0, 200, 150, 0.15);
 
-// light theme box shadows
-$lightBoxShadowDark: rgba(0, 0, 0, 0.2);
-$lightBoxShadow: rgba(0, 0, 0, 0.1);
-$lightBoxShadowDarker: rgba(0, 0, 0, 0.3);
+// --- Typography mono ---
+$text-mono:         #64b5f6;
 
-// dark theme box shadows
-$darkBoxShadow: #d9dbdf;
-$darkBoxShadow2: #ffffff;
+// --- Borders (compile-time aliases for components not yet converted) ---
+$border-bright:     rgba(30, 144, 255, 0.7);
 
-// linear gradients
-$experienceCardBlurredDivLG: linear-gradient(
-  rgba(0, 0, 0, 0.4),
-  rgba(0, 0, 0, 0.2)
-);
-$experienceCardBannerLG: linear-gradient(
-  rgba(0, 0, 0, 0.7),
-  rgba(0, 0, 0, 0.5)
-);
+// --- Buttons ---
+$buttonColor:       #1e90ff;
+$buttonHover:       #4da8ff;
+$topButtonHover:    $accent;
 
-// borders
-$progressBarBackground: rgb(243, 239, 239);
-$lightBorder1: rgba(211, 211, 211, 0.397);
-$educationCardBorder: #a9a7f9;
+// --- SCSS fallbacks for legacy components (always dark values) ---
+// Prefer using var(--...) in component SCSS for theme support
+$bg-primary:        #080f1a;
+$bg-secondary:      #0b1525;
+$bg-card:           #0e1d2e;
+$bg-card-hover:     #122338;
+$text-primary:      #d4e0ef;
+$text-secondary:    #7a96b2;
+$text-muted:        #3a5570;
+$border:            #1a2e45;
+$border-accent:     rgba(30, 144, 255, 0.4);
 
-// hovers
-$achievementCertificateCardHoverDark: rgba(255, 255, 255, 0.2);
-$blogCardHoverSmallColor: rgba(255, 255, 255, 0.8);
-$headerHoverBG: #f4f4f4;
-$contactDetailHoverTS: #b5b5b5;
+// --- Legacy aliases (keep for components that still import them) ---
+$titleColor:        $text-primary;
+$textColor:         $text-primary;
+$subTitle:          $text-secondary;
+$cardSubtitle:      $text-secondary;
+$talkCardSubTitle:  $text-secondary;
+$blogCardTitleColor: $text-primary;
+$textColorDark:     $text-primary;
 
-// misc backgrounds
-$progressBarSpanBG: #aaa5ff;
-$iconBackground: #333;
-$appHeaderBG: #282c34;
+$toggleCheck:       $accent;
+$toggleSwitchSliderBG: #1a2e45;
 
-// misc colors
-$skillsColor: #645beb;
-$appLink: #09d3ac;
+$githubRepoCardLanguageColorBG: $accent;
+$githubRepoCardColor:           $text-secondary;
+$githubRepoCardRepoCardStatsColor: $text-muted;
+$githubRepoCardRepoNameColor:   $text-primary;
+$githubProfileCardLocationTS:   $text-secondary;
+$githubProfileCardBorder:       $border-accent;
 
-// social media icons
-$faceBook: #3b5998;
-$linkedin: #0e76a8;
-$github: #333;
-$gitlab: #fca326;
-$google: #ea4335;
-$twitter: #1da1f2;
-$medium: #000;
+$lightBackground1:  $bg-card;
+$lightBackground2:  $bg-card;
+$lightBackground3:  $bg-secondary;
+$blogCardContainerColor: $text-secondary;
+$darkBackground:    $bg-secondary;
+
+$lightBoxShadowDark:    rgba(0, 0, 0, 0.5);
+$lightBoxShadow:        rgba(0, 0, 0, 0.3);
+$lightBoxShadowDarker:  rgba(0, 0, 0, 0.6);
+$darkBoxShadow:         rgba(30, 144, 255, 0.1);
+$darkBoxShadow2:        rgba(30, 144, 255, 0.05);
+
+$experienceCardBlurredDivLG: linear-gradient(rgba(8,15,26,0.85), rgba(8,15,26,0.6));
+$experienceCardBannerLG:     linear-gradient(rgba(8,15,26,0.9), rgba(11,21,37,0.7));
+
+$progressBarBackground: $border;
+$lightBorder1:          $border;
+$educationCardBorder:   $border-accent;
+
+$achievementCertificateCardHoverDark: rgba(30, 144, 255, 0.08);
+$blogCardHoverSmallColor: rgba(30, 144, 255, 0.1);
+$headerHoverBG:         $bg-card-hover;
+$contactDetailHoverTS:  $accent;
+
+$progressBarSpanBG:     $accent;
+$iconBackground:        $text-secondary;
+$appHeaderBG:           $bg-primary;
+
+$skillsColor:           $accent;
+$appLink:               $green-active;
+
+// --- Social icons (keep brand colors) ---
+$faceBook:      #3b5998;
+$linkedin:      #0e76a8;
+$github:        #d4e0ef;
+$gitlab:        #fca326;
+$google:        #ea4335;
+$twitter:       #1da1f2;
+$medium:        #d4e0ef;
 $stackoverflow: #f48024;
-$instagram: #c13584;
-$kaggle: #20beff;
+$instagram:     #e1306c;
+$kaggle:        #20beff;

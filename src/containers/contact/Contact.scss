@@ -2,10 +2,12 @@
 
 .contact-div-main {
   display: flex;
+  gap: 4rem;
+  align-items: flex-start;
 }
 
 .dark-mode a {
-  color: $textColorDark;
+  color: $accent;
 }
 
 .contact-div-main > * {
@@ -13,32 +15,63 @@
 }
 
 .contact-title {
-  font-size: 65px;
-  font-weight: 400;
-}
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
 
-.contact-detail,
-.contact-detail-email {
-  margin-top: 20px;
-  font-size: 40px;
-  font-weight: 400;
-  color: $subTitle;
-  text-decoration: none;
-}
-
-.contact-detail:hover,
-.contact-detail-email:hover {
-  color: $textColor;
-  text-shadow: 2px 1px 2px $contactDetailHoverTS;
-  transition: all 0.3s;
+  &::before {
+    content: "06 //";
+    display: block;
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: $accent;
+    margin-bottom: 0.75rem;
+  }
 }
 
 .contact-subtitle {
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 }
 
 .contact-text-div {
   margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-detail,
+.contact-detail-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+  margin-top: 0;
+
+  &::before {
+    content: "→";
+    color: $accent;
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    color: $accent;
+    text-shadow: none;
+  }
 }
 
 .contact-margin-top {
@@ -50,37 +83,27 @@
   height: auto;
   margin-left: 1.5rem;
   margin-top: -4rem;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 30px rgba(30, 144, 255, 0.1));
 }
 
-/* Media Query */
 @media (max-width: 1380px), (max-width: 768px) {
   .contact-title {
-    font-size: 56px;
-    font-weight: 400;
-    text-align: center;
+    font-size: 2rem;
+    text-align: left;
   }
-
-  .contact-title {
-    font-size: 40px;
-    text-align: center;
-  }
-
   .contact-subtitle {
-    font-size: 16px;
+    font-size: 0.7rem;
     line-height: normal;
-    text-align: center;
+    text-align: left;
   }
-
   .contact-text-div {
-    text-align: center;
-    margin-top: 1.5rem;
+    text-align: left;
   }
-
   .contact-detail,
   .contact-detail-email {
-    font-size: 20px;
+    font-size: 0.9rem;
   }
-
   .contact-image-div {
     display: none;
   }

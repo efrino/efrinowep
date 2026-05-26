@@ -18,9 +18,12 @@ export default function StackProgress() {
               };
               return (
                 <div key={i} className="skill">
-                  <p>{exp.Stack}</p>
-                  <div className="meter">
-                    <span style={progressStyle}></span>
+                  <div className="skill-header">
+                    <span className="skill-title">{exp.Stack}</span>
+                    <span className="skill-percentage">{exp.progressPercentage}</span>
+                  </div>
+                  <div className="meter-container">
+                    <span className="meter-fill" style={progressStyle}></span>
                   </div>
                 </div>
               );

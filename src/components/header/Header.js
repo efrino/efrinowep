@@ -3,9 +3,9 @@ import Headroom from "react-headroom";
 import StyleContext from "../../contexts/StyleContext";
 import {
   achievementSection,
+  bigProjects,
   blogSection,
   greeting,
-  openSource,
   resumeSection,
   skillsSection,
   talkSection,
@@ -17,7 +17,7 @@ import "./Header.scss";
 function Header() {
   const {isDark} = useContext(StyleContext);
   const viewExperience = workExperiences.display;
-  const viewOpenSource = openSource.display;
+  const viewProjects = bigProjects.display;
   const viewSkills = skillsSection.display;
   const viewAchievement = achievementSection.display;
   const viewBlog = blogSection.display;
@@ -27,10 +27,10 @@ function Header() {
   return (
     <Headroom>
       <header className={isDark ? "dark-menu header" : "header"}>
-        <a href="/" className="logo">
-          <span className="grey-color"> &lt;</span>
-          <span className="logo-name">{greeting.username}</span>
-          <span className="grey-color">/&gt;</span>
+        <a href="/" className="logo blueprint-logo">
+          <span className="logo-indicator"></span>
+          <span className="logo-name">EFRINO_WEP</span>
+          <span className="logo-tag">SYS.ONLINE</span>
         </a>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label
@@ -48,12 +48,12 @@ function Header() {
           )}
           {viewExperience && (
             <li>
-              <a href="#experience">Work Experiences</a>
+              <a href="#experience">Experience</a>
             </li>
           )}
-          {viewOpenSource && (
+          {viewProjects && (
             <li>
-              <a href="#opensource">Open Source</a>
+              <a href="#projects">Projects</a>
             </li>
           )}
           {viewAchievement && (
@@ -77,7 +77,7 @@ function Header() {
             </li>
           )}
           <li>
-            <a href="#contact">Contact Me</a>
+            <a href="#contact">Contact</a>
           </li>
           <li>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}

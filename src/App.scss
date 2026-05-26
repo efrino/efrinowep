@@ -1,7 +1,33 @@
 @import "./globalColor";
 
+/* ============================================================
+   GLOBAL — Blueprint grid background & typography
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // Blueprint grid lines
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .App {
-  text-align: center;
+  text-align: left;
   width: 100%;
   overflow-x: hidden;
 }
@@ -11,20 +37,77 @@
 }
 
 .App-header {
-  background-color: $appHeaderBG;
+  background-color: var(--bg-primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(0.625rem + 2vmin);
-  color: $textColorDark;
+  color: var(--text-primary);
 }
 
 .App-link {
-  color: $appLink;
+  color: $green-active;
 }
 
+// --- Shared section label style ---
 .subTitle {
-  color: $subTitle;
+  color: var(--text-secondary) !important;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+// --- Blueprint section heading prefix ---
+.bp-label {
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $accent;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+// --- Active status badge ---
+.bp-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: $green-active;
+  text-transform: uppercase;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $green-active;
+    box-shadow: 0 0 6px $green-active;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+// --- Divider ---
+.bp-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+// --- Dark mode class (kept for component compatibility) ---
+.dark-mode {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }

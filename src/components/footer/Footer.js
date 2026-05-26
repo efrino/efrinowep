@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import emoji from "react-easy-emoji";
-import { Fade } from "react-reveal";
+import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 import "./Footer.scss";
 
@@ -14,9 +14,7 @@ export default function Footer() {
         </p>
         <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
           Theme by{" "}
-          <a href="https://github.com/efrino/developerFolio">
-            Efrino Wahyu
-          </a>
+          <a href="https://github.com/efrino/efrinowep">Efrino Wahyu</a>
         </p>
       </div>
     </Fade>

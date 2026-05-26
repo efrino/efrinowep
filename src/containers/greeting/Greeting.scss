@@ -3,115 +3,178 @@
 .main {
   width: 90%;
   padding: 20px 10px;
-  margin: 0px auto;
+  margin: 0 auto;
   margin-top: 4rem;
 }
+
 .greet-main {
   width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
+  padding: 60px 10px 40px;
+  margin: 0 auto;
   margin-top: 2rem;
 }
 
 .greeting-main {
   display: flex;
-}
-
-.subTitle {
-  color: $subTitle !important;
-}
-
-.greeting-main {
-  display: flex;
+  align-items: center;
+  gap: 4rem;
 }
 
 .greeting-main > * {
   flex: 1;
   margin-bottom: 30px;
 }
+
+.greeting-nickname-label {
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 1rem;
+  display: block;
+
+  &::before {
+    content: "// ";
+    opacity: 0.5;
+  }
+}
+
+.greeting-text {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.wave-emoji {
+  display: none;
+}
+
+.greeting-terminal-box {
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 580px;
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px -15px rgba(30, 144, 255, 0.3);
+    border-color: var(--border-accent);
+  }
+}
+
+.terminal-header {
+  background-color: rgba(30, 144, 255, 0.05);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .close { background-color: #ff3b30; }
+  .minimize { background-color: #ffcc00; }
+  .maximize { background-color: #28cd41; }
+  
+  .terminal-title {
+    margin-left: auto;
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+}
+
+.greeting-text-p {
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace !important;
+  font-size: 0.9rem !important;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  padding: 1.5rem;
+  margin: 0;
+  
+  .prompt {
+    color: $accent;
+    margin-right: 0.5rem;
+    font-weight: bold;
+  }
+}
+
+.subTitle {
+  color: var(--text-secondary) !important;
+}
+
 .button-greeting-div {
   display: flex;
-  margin-top: 20px;
+  gap: 1rem;
+  margin-top: 2rem;
+  align-items: center;
 }
+
 .download-link-button {
   text-decoration: none;
 }
 
-.greeting-text {
-  font-size: 70px;
-  line-height: 1.1;
-  color: $textColor !important;
+// Hero pipeline SVG — shown on right side
+.greeting-image-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
-.greeting-text-p {
-  font-size: 30px;
-  line-height: 40px;
-}
-
-.greeting-image-div > img {
-  max-width: 100%;
-  height: auto;
-}
-
-.wave-emoji {
-  animation-duration: 1.8s;
-  animation-iteration-count: infinite;
-  animation-name: wave;
-  display: inline-block;
-  transform-origin: 70% 70%;
-}
-
-@keyframes wave {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(-10deg);
-  }
-  20% {
-    transform: rotate(12deg);
-  }
-  30% {
-    transform: rotate(-10deg);
-  }
-  40% {
-    transform: rotate(9deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(0deg);
+// Make text side wider when needed
+.greeting-main {
+  .greeting-text-div {
+    flex: 1.2;
   }
 }
 
-/* Media Query */
+/* ---- Responsive ---- */
 @media (max-width: 1380px) {
   .greeting-text {
-    font-size: 50px;
+    font-size: 46px;
   }
   .greeting-text-p {
-    font-size: 20px;
+    font-size: 1rem;
   }
 }
+
 @media (max-width: 768px) {
+  .greet-main {
+    padding: 40px 10px 20px;
+  }
   .button-greeting-div {
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .greeting-text {
-    font-size: 30px;
+    font-size: 2.2rem;
     text-align: center;
   }
   .greeting-text-p {
-    font-size: 16px;
-    line-height: normal;
-    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: left;
+    margin: 1.25rem auto 0;
   }
   .greeting-main {
-    display: block;
+    flex-direction: column;
+    gap: 2rem;
   }
   .greeting-image-div {
-    height: 256px;
+    width: 100%;
+    order: -1;
   }
 }
 

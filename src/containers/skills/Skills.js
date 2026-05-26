@@ -44,19 +44,19 @@ export default function Skills() {
               {skillsSection.subTitle}
             </p>
             <SoftwareSkill />
-            <div>
+            <div className="skills-cards-container">
               {skillsSection.skills.map((skills, i) => {
                 return (
-                  <p
-                    key={i}
-                    className={
-                      isDark
-                        ? "dark-mode subTitle skills-text"
-                        : "subTitle skills-text"
-                    }
-                  >
-                    {skills}
-                  </p>
+                  <div key={i} className="skill-card">
+                    <div className="skill-card-header">
+                      <span className="skill-card-dot"></span>
+                      <span className="skill-card-dot"></span>
+                      <span className="skill-card-dot"></span>
+                    </div>
+                    <p className={isDark ? "dark-mode skill-card-text" : "skill-card-text"}>
+                      {skills}
+                    </p>
+                  </div>
                 );
               })}
             </div>

@@ -1,15 +1,19 @@
 @import "../../_globalColor";
 
+.footer-div {
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
 .footer-text {
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted) !important;
   text-align: center;
-  color: $subTitle !important;
 }
 
 .dark-mode {
-  color: $textColorDark !important;
-}
-
-.footer-div {
-  margin-top: 2rem;
-  padding-bottom: 1rem;
+  color: var(--text-primary) !important;
 }

@@ -1,74 +1,53 @@
 @import "../../_globalColor";
 
 .social-media-div {
-  font-size: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
 }
 
 .icon-button {
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .icon-button i {
-  color: $textColorDark;
-  border-radius: 2.6rem;
+  color: $text-secondary;
+  border-radius: 2px;
   cursor: pointer;
-  display: inline-block;
-  font-size: 1.3rem;
-  height: 2.6rem;
-  line-height: 2.6rem;
-  margin: 0 5px;
-  position: relative;
-  text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 2.6rem;
-  margin-bottom: 10px;
-  transition: 0.2s ease-in;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  height: 2.2rem;
+  width: 2.2rem;
+  border: 1px solid $border;
+  background-color: $bg-card;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  margin: 0;
 }
 
-.facebook i {
-  background-color: $faceBook;
+.icon-button i:hover {
+  color: $accent;
+  border-color: $border-accent;
+  background-color: $accent-dim;
 }
 
-.linkedin i {
-  background-color: $linkedin;
-}
-
-.github i {
-  background-color: $github;
-}
-
-.gitlab i {
-  background-color: $gitlab;
-}
-
-.google i {
-  background-color: $google;
-}
-
-.twitter i {
-  background-color: $twitter;
-}
-
-.medium i {
-  background-color: $medium;
-}
-
-.stack-overflow i {
-  background-color: $stackoverflow;
-}
-
-.kaggle i {
-  background-color: $kaggle;
-}
-
+// Keep specific brand hover states minimal
+.facebook i,
+.linkedin i,
+.github i,
+.gitlab i,
+.google i,
+.twitter i,
+.medium i,
+.stack-overflow i,
+.kaggle i,
 .instagram i {
-  background-color: $instagram;
+  background-color: $bg-card;
 }
 
-/* Hover Transition */
 .twitter i:hover,
 .google i:hover,
 .gitlab i:hover,
@@ -79,12 +58,12 @@
 .stack-overflow i:hover,
 .kaggle i:hover,
 .medium i:hover {
-  background-color: $textColor;
+  color: $accent;
+  background-color: $accent-dim;
 }
 
-/* Media Query */
 @media (max-width: 768px) {
   .social-media-div {
-    text-align: center;
+    justify-content: center;
   }
 }

@@ -1,58 +1,133 @@
 @import "../../_globalColor";
 
-.meter {
-  height: 20px;
-  position: relative;
-  background: $progressBarBackground;
-  -moz-border-radius: 25px;
-  -webkit-border-radius: 25px;
-  border-radius: 25px;
-}
-.meter > span {
-  display: block;
-  height: 100%;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  background-color: $progressBarSpanBG;
-  position: relative;
-  overflow: hidden;
-}
-.skill {
-  line-height: 3.5vw;
-}
-.skill-bars {
-  font-size: 28px;
-  width: 40%;
-}
 .skills-container {
   display: flex;
   width: 90%;
   padding: 20px 10px;
-  margin: 0px auto;
+  margin: 0 auto;
   margin-top: 2rem;
 }
+
 .skills-container > * {
   flex: 1;
   margin-bottom: 30px;
 }
-.skills-image > img {
-  margin-left: 80px;
-  max-width: 90%;
-  height: auto;
+
+.skills-image {
+  display: none !important;
 }
 
-/* Media Query */
+.skills-bar {
+  width: 100%;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3rem;
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
 
-@media (max-width: 1456px) {
-  .skills-bar {
-    line-height: 4rem;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(rgba(30, 144, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(30, 144, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+    pointer-events: none;
   }
-  .skills-image {
-    display: none;
-    order: 2;
+}
+
+.skills-bar .skills-heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: "// SYSTEM PROFICIENCY METRICS";
+    display: block;
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: $accent;
+    margin-bottom: 0.75rem;
   }
+}
+
+.skill {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.6rem;
+
+  .skill-title {
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+    text-transform: uppercase;
+  }
+
+  .skill-percentage {
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 0.85rem;
+    color: $accent;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+}
+
+.meter-container {
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.meter-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(30,144,255,0.4), $accent);
+  border-radius: 3px;
+  position: relative;
+  transform-origin: left;
+  animation: load-scale 1.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0; top: 0;
+    width: 25px;
+    height: 100%;
+    background-color: #fff;
+    filter: blur(4px);
+    opacity: 0.5;
+    animation: pulse-glow 2s infinite alternate;
+  }
+}
+
+@keyframes load-scale {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes pulse-glow {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.8; }
 }
 
 @media (max-width: 768px) {
@@ -60,11 +135,9 @@
     flex-direction: column;
   }
   .skills-bar {
-    line-height: 3rem;
-    margin: 20px;
+    margin: 0;
   }
-  .skills-image {
-    display: none;
-    order: 2;
+  .skills-bar .skills-heading {
+    font-size: 1.8rem;
   }
 }

@@ -1,19 +1,28 @@
-.experience-cards-div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1rem 1rem;
-}
+@import "../../_globalColor";
 
 .experience-heading {
-  font-size: 56px;
-  font-weight: 400;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+
+  &::before {
+    content: "03 // PROFESSIONAL EXPERIENCE MODULE";
+    display: block;
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: $accent;
+    margin-bottom: 0.75rem;
+  }
 }
 
 .experience-container {
   display: flex;
   width: 90%;
   padding: 20px 10px;
-  margin: 0px auto;
+  margin: 0 auto;
   margin-top: 2rem;
 }
 
@@ -21,17 +30,23 @@
   flex: 1;
 }
 
-/* Media Query */
+.experience-cards-div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
 
 @media (max-width: 1380px) {
   .experience-heading {
-    font-size: 40px;
+    font-size: 2.2rem;
   }
 }
 
 @media (max-width: 768px) {
   .experience-heading {
-    font-size: 30px;
-    text-align: center;
+    font-size: 1.8rem;
+  }
+  .experience-cards-div {
+    grid-template-columns: 1fr;
   }
 }

@@ -3,31 +3,30 @@
 // To change portfolio colors globally go to the  _globalColor.scss file
 
 import emoji from "react-easy-emoji";
-import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your file name for custom animation
+import splashAnimation from "./assets/lottie/splashAnimation";
 
 // Splash Screen
 
 const splashScreen = {
-  enabled: true, // set false to disable splash screen
+  enabled: true,
   animation: splashAnimation,
-  duration: 2000 // Set animation duration as per your animation
+  duration: 2000
 };
 
 // Summary And Greeting Section
 
 const illustration = {
-  animated: true // Set to false to use static SVG
+  animated: true
 };
 
 const greeting = {
   username: "Efrino Wahyu Eko Pambudi",
-  title: "Hi all, I am Efrino",
+  title: "Efrino Wahyu Eko Pambudi",
   subTitle: emoji(
-    "A passionate Full Stack Software Developer 🚀 having an experience of building Web and Mobile applications with JavaScript / Reactjs / Nodejs / React Native and some other cool libraries and frameworks."
+    "A Software Engineer who turns complex Excel-based industrial workflows into smart, scalable web applications. Currently building PPIC Smart Planner — a 16-step automated production planning system at PT. Mekar Armada Jaya."
   ),
-  resumeLink:
-    "https://drive.google.com/file/d/1eb5t81tw22Jtrip0yT_0RXPS5iiE7ZT9/view?usp=sharing", // Set to empty to hide the button
-  displayGreeting: true // Set false to hide this section, defaults to true
+  resumeLink: "/resume.pdf",
+  displayGreeting: true
 };
 
 // Social Media Links
@@ -38,255 +37,232 @@ const socialMediaLinks = {
   gmail: "efrinowep@gmail.com",
   gitlab: "https://gitlab.com/efrino",
   instagram: "https://www.instagram.com/efrinowep_",
-  // medium: "https://medium.com/@efrino",
-  // stackoverflow: "https://stackoverflow.com/users/10422806/saad-pasta",
-  // Instagram, Twitter and Kaggle are also supported in the links!
-  // To customize icons and social links, tweak src/components/SocialMedia
-  display: true // Set true to display this section, defaults to false
+  display: true
 };
 
 // Skills Section
 
 const skillsSection = {
   title: "What I do",
-  subTitle: "CRAZY FULL STACK DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
+  subTitle:
+    "SOFTWARE ENGINEER SPECIALIZING IN INDUSTRIAL DIGITALIZATION & WEB APPLICATIONS",
   skills: [
     emoji(
-      "⚡ Develop highly interactive Front end / User Interfaces for your web and mobile applications"
+      "⚡ Build web-based systems that replace complex Excel workflows — from PPIC planning to inventory management"
     ),
-    emoji("⚡ Progressive Web Applications ( PWA ) in normal and SPA Stacks"),
     emoji(
-      "⚡ Integration of third party services such as Firebase/ AWS / Digital Ocean"
+      "⚡ Design multi-step automated pipelines with real-time progress tracking using Server-Sent Events (SSE)"
+    ),
+    emoji(
+      "⚡ Develop CMS interfaces in Vue 3 that allow non-technical users to adjust parameters and formulas without touching code"
     )
   ],
 
-  /* Make Sure to include correct Font Awesome Classname to view your icon
-https://fontawesome.com/icons?d=gallery */
-
   softwareSkills: [
     {
-      skillName: "html-5",
+      skillName: "HTML5",
       fontAwesomeClassname: "fab fa-html5"
     },
     {
-      skillName: "css3",
+      skillName: "CSS3",
       fontAwesomeClassname: "fab fa-css3-alt"
-    },
-    {
-      skillName: "sass",
-      fontAwesomeClassname: "fab fa-sass"
     },
     {
       skillName: "JavaScript",
       fontAwesomeClassname: "fab fa-js"
     },
     {
-      skillName: "reactjs",
-      fontAwesomeClassname: "fab fa-react"
+      skillName: "Vue 3",
+      fontAwesomeClassname: "fab fa-vuejs"
     },
     {
-      skillName: "nodejs",
-      fontAwesomeClassname: "fab fa-node"
+      skillName: "PHP",
+      fontAwesomeClassname: "fab fa-php"
     },
     {
-      skillName: "swift",
-      fontAwesomeClassname: "fab fa-swift"
+      skillName: "MySQL",
+      fontAwesomeClassname: "fas fa-database"
+    },
+    {
+      skillName: "Git",
+      fontAwesomeClassname: "fab fa-git-alt"
+    },
+    {
+      skillName: "GitHub",
+      fontAwesomeClassname: "fab fa-github"
+    },
+    {
+      skillName: "Linux",
+      fontAwesomeClassname: "fab fa-linux"
     },
     {
       skillName: "npm",
       fontAwesomeClassname: "fab fa-npm"
     },
     {
-      skillName: "sql-database",
-      fontAwesomeClassname: "fas fa-database"
+      skillName: "SASS",
+      fontAwesomeClassname: "fab fa-sass"
     },
     {
-      skillName: "aws",
-      fontAwesomeClassname: "fab fa-aws"
-    },
-    {
-      skillName: "firebase",
-      fontAwesomeClassname: "fas fa-fire"
-    },
-    {
-      skillName: "python",
-      fontAwesomeClassname: "fab fa-python"
-    },
-    {
-      skillName: "docker",
-      fontAwesomeClassname: "fab fa-docker"
+      skillName: "Figma",
+      fontAwesomeClassname: "fab fa-figma"
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: true
 };
 
 // Education Section
 
 const educationInfo = {
-  display: true, // Set false to hide this section, defaults to true
+  display: true,
   schools: [
-    {
-      schoolName: "SMA N 1 SRAGEN",
-      logo: require("./assets/images/logosmansa.png"),
-      subHeader: "Mathematics and Science",
-      duration: "July 2018 - May 2021",
-      desc: "Leader of Team Web #9",
-      descBullets: [
-        "•	Be responsible for all activities carried out by the web team during events.",
-        "•	Assign tasks to a team member based on the duty schedule.",
-        "•	Protect and uphold the school's reputation while managing the official school social media accounts.",
-        "•	Adhere to journalistic principles and also be creative to make the school's online presence look appealing and friendly."
-
-      ]
-    },
     {
       schoolName: "Politeknik Negeri Semarang",
       logo: require("./assets/images/logopolines.png"),
-      subHeader: "Undergraduate in Computer Science",
-      duration: "September 2022 - Now",
-      desc: "Ranked top 10% in the program. Took courses about Software Engineering, Web Security, Operating Systems, Mobile Development, IoT, Web Development",
-      descBullets: ["Learning and Practicing everyday, everywhere and EveryTIMEEE"]
+      subHeader: "D3 Teknik Informatika — Teknik Elektro · GPA 3.95",
+      duration: "September 2022 – 2025",
+      desc: "Focused on software engineering, web development, and database systems.",
+      descBullets: [
+        "Courses: Software Engineering, Web Development, Database Systems, Operating Systems, IoT, Mobile Development, Web Security",
+        "Thesis / Final Project: PPIC Smart Planner — web-based production planning digitalization system"
+      ]
+    },
+    {
+      schoolName: "SMA Negeri 1 Sragen",
+      logo: require("./assets/images/logosmansa.png"),
+      subHeader: "Mathematics and Science (MIPA)",
+      duration: "July 2018 – May 2021",
+      desc: "Leader of Web Team #9",
+      descBullets: [
+        "Managed official school social media accounts and maintained the school's online presence.",
+        "Coordinated web team duties and upheld journalistic principles in all published content."
+      ]
     }
   ]
 };
 
-// Your top 3 proficient stacks/tech experience
+// Proficiency Bars
 
 const techStack = {
-  viewSkillBars: true, //Set it to true to show Proficiency Section
+  viewSkillBars: true,
   experience: [
     {
-      Stack: "Frontend", //Insert stack or technology you have experience in
-      progressPercentage: "85%" //Insert relative proficiency in percentage
-    },
-    {
-      Stack: "Backend",
-      progressPercentage: "93%"
-    },
-    {
-      Stack: "Programming",
+      Stack: "Frontend (Vue 3 / HTML / CSS / Flutter)",
       progressPercentage: "80%"
+    },
+    {
+      Stack: "Backend (CI3 / PHP)",
+      progressPercentage: "80%"
+    },
+    {
+      Stack: "Database (MySQL)",
+      progressPercentage: "75%"
+    },
+    {
+      Stack: "PPIC / Digitalization",
+      progressPercentage: "85%"
     }
   ],
-  displayCodersrank: true // Set true to display codersrank badges section need to changes your username in src/containers/skillProgress/skillProgress.js:17:62, defaults to false
+  displayCodersrank: false
 };
 
-// Work experience section
+// Work Experience Section
 
 const workExperiences = {
-  display: true, //Set it to true to show workExperiences Section
+  display: true,
   experience: [
     {
-      role: "External Auditor of Kimia Farma",
-      company: "KAP Gatot Permadi, Azwir & Abimail",
-      companylogo: require("./assets/images/logogpa.png"),
-      date: "24 Desember 2023 - 7 Januari 2024",
-      // desc: "External Auditor of Kimia Farma Jawa Tengah",
+      role: "IT Programmer",
+      company: "PT. Mekar Armada Jaya",
+      // TODO: ganti dengan logo MAJ — simpan di src/assets/images/logomaj.png
+      companylogo: require("./assets/images/logomaj.png"),
+      date: "4 November 2025 – Present",
+      desc: "Building PPIC Smart Planner — a web system that digitalizes production planning workflows for the Welding area.",
       descBullets: [
-        "Draft an agreement with the pharmacy staff for collaboration in sample counting, including signatures and an agreement letter from the headquarters.","Sample several items from various shelves to validate the data from the headquarters against the on-site data.",
-        "Prepare a discrepancy report based on all the counted data, and then conduct interviews with the staff to understand the reasons for the discrepancies."
+        "Designed and implemented a 16-step automated planning pipeline: reads 6 data sources (delivery schedule, stock, achievement history, working calendar) and outputs a complete daily production schedule per part per shift.",
+        "Built real-time pipeline execution progress tracking using Server-Sent Events (EventStream) — users can monitor each of the 16 steps live as they run.",
+        "Developed a CMS module in Vue 3 allowing planners to adjust planning parameters and formulas (MDFO, safety stock rules, priority weights) without any code changes.",
+        "Stack: CodeIgniter 3 (CI3) · Vue 3 · MySQL 5.7 · Server-Sent Events (SSE)"
       ]
     },
-    // {
-    //   role: "Front-End Developer",
-    //   company: "Quora",
-    //   companylogo: require("./assets/images/quoraLogo.png"),
-    //   date: "May 2017 – May 2018",
-    //   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    // },
-    // {
-    //   role: "Software Engineer Intern",
-    //   company: "Airbnb",
-    //   companylogo: require("./assets/images/airbnbLogo.png"),
-    //   date: "Jan 2015 – Sep 2015",
-    //   desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    // }
+    {
+      role: "External Auditor",
+      company: "KAP Gatot Permadi, Azwir & Abimail",
+      companylogo: require("./assets/images/logogpa.png"),
+      date: "24 Desember 2023 – 7 Januari 2024",
+      desc: "Assisted in external audit of Kimia Farma Jawa Tengah.",
+      descBullets: [
+        "Drafted collaboration agreements with pharmacy staff for sample counting and inventory validation.",
+        "Sampled inventory items across shelves to validate headquarters data against on-site physical data.",
+        "Prepared discrepancy reports and conducted staff interviews to identify root causes of data gaps."
+      ]
+    }
   ]
 };
 
-/* Your Open Source Section to View Your Github Pinned Projects
-To know how to get github key look at readme.md */
-
-const openSource = {
-  showGithubProfile: "true", // Set true or false to show Contact profile using Github, defaults to true
-  display: true // Set false to hide this section, defaults to true
-};
-
-// Some big projects you have worked on
-
+// Big Projects
 const bigProjects = {
-  title: "Big Projects",
-  subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
+  title: "Projects",
+  subtitle:
+    "SYSTEMS I HAVE BUILT — FROM INDUSTRIAL PLANNING TO LEARNING PLATFORMS",
   projects: [
     {
-      image: require("./assets/images/logodikte.png"),
-      projectName: "DIKTE",
-      projectDesc: "Prototipe Project Essay Mandalika yang telah meraih Silver Award",
+      image: require("./assets/images/ppic/pipeline-source.png"),
+      projectName: "PPIC Smart Planner — Welding Area",
+      projectDesc:
+        "Internal web system at PT. Mekar Armada Jaya that replaces Excel-based PPIC calculations. A 16-step automated pipeline reads 6 data sources (delivery schedule, stock, achievement history, working calendar) and generates a complete production schedule per part per shift. Built with CI3 + Vue 3 + MySQL 5.7 + Server-Sent Events.",
       footerLink: [
         {
-          name: "Visit Website",
-          url: "https://digitalktp.my.id/"
+          name: "Lihat Pipeline →",
+          url: require("./assets/images/ppic/pipeline-steps.png")
+        },
+        {
+          name: "Lihat Diagram Sumber →",
+          url: require("./assets/images/ppic/pipeline-source.png")
         }
-        //  you can add extra buttons here.
       ]
     },
     {
-      image: require("./assets/images/logopci.png"),
-      projectName: "Learning Management System",
-      projectDesc: "Learning Management System menggunakan moodle berdasarkan PBL yang saya kerjakan saat belajar di Politeknik Negeri Batam",
+      image: require("./assets/images/edura/logo2.png"),
+      projectName: "Edura — Learning Management System (Tugas Akhir)",
+      projectDesc:
+        "Edura is a Learning Management System (LMS) customized for my Final Project (Tugas Akhir). It adapts course structure, grading flow, and module layout to support active learning for students.",
       footerLink: [
         {
-          name: "Visit Website",
-          url: "https://learning.digitalktp.my.id"
+          name: "Lihat Maskot 1",
+          url: require("./assets/images/edura/maskot1.png")
+        },
+        {
+          name: "Lihat Maskot 2",
+          url: require("./assets/images/edura/maskot2.png")
         }
       ]
     }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: true
 };
 
 // Achievement Section
-// Include certificates, talks etc
 
 const achievementSection = {
-  title: emoji("Achievements And Certifications 🏆 "),
-  subtitle:
-    "Achievements, Certifications, Award Letters and Some Cool Stuff that I have done !",
-
+  title: emoji("Achievements & Certifications 🏆"),
+  subtitle: "Awards and recognitions I've received along the way.",
   achievementsCards: [
     {
-      title: "Silver Medal NusantaraMuda Mandalika",
+      title: "Silver Medal — NusantaraMuda Mandalika",
       subtitle:
-        "DIKTE : Mendapatkan Medali Silver di Bidang Sosial Politik dengan Sentuhan Web Development",
+        "Project DIKTE: Web-based platform for social & political issue awareness. Awarded Silver Medal in the Web Development category at the NusantaraMuda Mandalika national competition.",
       image: require("./assets/images/logosilver.png"),
-      imageAlt: "Sertifikat Lomba Essay Mandalika",
+      imageAlt: "Silver Medal NusantaraMuda Mandalika",
       footerLink: [
         {
-          name: "Certification",
+          name: "Sertifikat",
           url: "https://drive.google.com/file/d/1Mxe-TdhFu5caIq1Kq-CAS4xAfYCJRo4R/view?usp=sharing"
         }
-        // {
-        //   name: "Award Letter",
-        //   url: "https://drive.google.com/file/d/0B7kazrtMwm5dekxBTW5hQkg2WXUyR3QzQmR0VERiLXlGRVdF/view?usp=sharing"
-        // },
-        
       ]
-    },
-    // {
-    //   title: "PWA Web App Developer",
-    //   subtitle: "Completed Certifcation from SMIT for PWA Web App Development",
-    //   image: require("./assets/images/pwaLogo.webp"),
-    //   imageAlt: "PWA Logo",
-    //   footerLink: [
-    //     {name: "Certification", url: ""},
-    //     {
-    //       name: "Final Project",
-    //       url: "https://pakistan-olx-1.firebaseapp.com/"
-    //     }
-    //   ]
-    // }
+    }
   ],
-  display: true // Set false to hide this section, defaults to true
+  display: true
 };
 
 // Blogs Section
@@ -294,81 +270,76 @@ const achievementSection = {
 const blogSection = {
   title: "Blogs",
   subtitle:
-    "With Love for Developing cool stuff, I love to write and teach others what I have learnt.",
-  displayMediumBlogs: "true", // Set true to display fetched medium blogs instead of hardcoded ones
-  blogs: [
-    {
-      url: "https://digitalktp.my.id",
-      title: "Masih dalam pengembangan yaa .. ",
-      description:
-        "Sabar ya bosku .."
-    },
-  ],
-  display: true // Set false to hide this section, defaults to true
+    "Writing about software engineering, digitalization, and PPIC systems.",
+  displayMediumBlogs: "false",
+  blogs: [],
+  display: false
 };
 
-// Talks Sections
+// Talks Section
 
 const talkSection = {
-  title: "TALKS",
+  title: "Talks",
   subtitle: emoji(
-    "I LOVE TO SHARE MY LIMITED KNOWLEDGE AND GET A SPEAKER BADGE 😅"
+    "Sharing knowledge about web development and industrial digitalization."
   ),
-
-  talks: [
-    {
-      title: "Build Actions For Google Assistant",
-      subtitle: "Codelab at GDG DevFest Karachi 2019",
-      slides_url: "https://bit.ly/saadpasta-slides",
-      event_url: "https://www.facebook.com/events/2339906106275053/"
-    }
-  ],
-  display: false // Set false to hide this section, defaults to true
+  talks: [],
+  display: false
 };
 
 // Podcast Section
 
 const podcastSection = {
   title: emoji("Podcast 🎙️"),
-  subtitle: "I LOVE TO TALK ABOUT MYSELF AND TECHNOLOGY",
-
-  // Please Provide with Your Podcast embeded Link
-  podcast: [
-    "https://anchor.fm/codevcast/embed/episodes/DevStory---Saad-Pasta-from-Karachi--Pakistan-e9givv/a-a15itvo"
-  ],
-  display: false // Set false to hide this section, defaults to true
+  subtitle: "Conversations about tech and engineering.",
+  podcast: [],
+  display: false
 };
 
 // Resume Section
+
 const resumeSection = {
   title: "Resume",
   subtitle: "Feel free to download my resume",
-  resume:[
-    "https://drive.google.com/file/d/1eb5t81tw22Jtrip0yT_0RXPS5iiE7ZT9/view?usp=sharing"],
-  
-  // Please Provide with Your Podcast embeded Link
-  display: true // Set false to hide this section, defaults to true
+  resume: ["/resume.pdf"],
+  display: true
 };
+
+// Contact Section
 
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle:
-    "Discuss a project or just want to say hi? My Inbox is open for all.",
-  number: "+62-82243135401",
-  email_address: "efrinowep@gmail.com",
+    "Have a project in mind — a smart planner, a web app, or a digitalization tool? My inbox is open.",
+  number: "+62-85184084989",
+  email_address: "efrinowep@gmail.com"
 };
 
 // Twitter Section
 
 const twitterDetails = {
-  userName: "@efrino", //Replace "twitter" with your twitter username without @
-  display: false // Set true to display this section, defaults to false
+  userName: "efrinowep_",
+  display: false
 };
 
-const isHireable = true; // Set false if you are not looking for a job. Also isHireable will be display as Open for opportunities: Yes/No in the GitHub footer
+const isHireable = true;
 
 export {
-  achievementSection, bigProjects, blogSection, contactInfo, educationInfo, greeting, illustration, isHireable, openSource, podcastSection, resumeSection, skillsSection, socialMediaLinks,
-  splashScreen, talkSection, techStack, twitterDetails, workExperiences
+  achievementSection,
+  bigProjects,
+  blogSection,
+  contactInfo,
+  educationInfo,
+  greeting,
+  illustration,
+  isHireable,
+  podcastSection,
+  resumeSection,
+  skillsSection,
+  socialMediaLinks,
+  splashScreen,
+  talkSection,
+  techStack,
+  twitterDetails,
+  workExperiences
 };
-

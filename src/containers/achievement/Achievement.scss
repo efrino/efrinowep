@@ -1,34 +1,43 @@
 @import "../../_globalColor";
 
 .achievement-heading {
-  font-size: 56px;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0px;
-}
-.achievement-subtitle {
-  text-transform: uppercase;
-  margin: 0px;
-  margin-bottom: 50px;
-}
-.subTitle {
-  color: $subTitle;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0 0 0.25rem;
+
+  &::before {
+    content: "05 //";
+    display: block;
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: $accent;
+    margin-bottom: 0.75rem;
+  }
 }
 
-/* Media Query */
-@media (max-width: 1380px) {
-  .achievement-heading {
-    font-size: 40px;
-  }
+.achievement-subtitle {
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 }
+
+.subTitle {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1380px) {
+  .achievement-heading { font-size: 2.2rem; }
+}
+
 @media (max-width: 768px) {
-  .achievement-heading {
-    font-size: 30px;
-    text-align: center;
-  }
-  .achievement-subtitle {
-    font-size: 16px;
-    line-height: normal;
-    text-align: center;
-  }
+  .achievement-heading { font-size: 1.8rem; }
+  .achievement-subtitle { font-size: 0.7rem; text-align: left; }
 }
