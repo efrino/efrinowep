@@ -1,0 +1,99 @@
+---
+import "../styles/global.css";
+import { profile } from "../data/profile";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${profile.name} · ${profile.role}`,
+  description = profile.intro
+} = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={profile.name} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        const t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container nav" aria-label="Main">
+        <a class="brand" href="/">
+          <img src="/favicon.svg" alt="" width="30" height="30" />
+          <span>{profile.shortName}</span>
+        </a>
+        <div class="nav-links">
+          <a href="/#about">About</a>
+          <a href="/#experience">Experience</a>
+          <a href="/#projects">Projects</a>
+          <a href="/#skills">Skills</a>
+          <a href="/#contact">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a class="btn btn-primary btn-sm" href={profile.resume} target="_blank" rel="noopener">Resume</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© {new Date().getFullYear()} {profile.name}</span>
+        <span class="footer-links">
+          <a href={profile.github} target="_blank" rel="noopener">GitHub</a>
+          <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={`mailto:${profile.email}`}>Email</a>
+        </span>
+      </div>
+    </footer>
+
+    <script is:inline>
+      document.getElementById("theme-toggle")?.addEventListener("click", () => {
+        const root = document.documentElement;
+        const current =
+          root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        const next = current === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        try {
+          localStorage.setItem("theme", next);
+        } catch {}
+        document.dispatchEvent(new CustomEvent("themechange", { detail: next }));
+      });
+    </script>
+  </body>
+</html>

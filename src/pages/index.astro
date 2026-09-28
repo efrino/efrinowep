@@ -1,0 +1,474 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile, experience, education, awards, projects, privateWork, skills } from "../data/profile";
+---
+
+<Base>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Hi, I'm {profile.shortName} 👋</p>
+        <h1 class="hero-title">
+          {profile.role}<br />
+          <span class="gradient">{profile.headline}</span>
+        </h1>
+        <p class="lead">{profile.intro}</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn" href={profile.resume} target="_blank" rel="noopener">Download resume</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+        <p class="hero-meta">
+          <span class="dot"></span> Open to new opportunities · {profile.location}
+        </p>
+      </div>
+      <ul class="stats">
+        {
+          profile.highlights.map((h) => (
+            <li class="card stat">
+              <strong>{h.value}</strong>
+              <span>{h.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">What I bring to a team</h2>
+      </div>
+      <div class="grid grid-2">
+        {
+          profile.strengths.map((s) => (
+            <div class="card pad">
+              <h3>{s.title}</h3>
+              <p class="muted">{s.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Experience</p>
+        <h2 class="section-title">Where I've worked</h2>
+      </div>
+      <ol class="timeline">
+        {
+          experience.map((e) => (
+            <li class="card pad">
+              <div class="tl-head">
+                <div>
+                  <h3>{e.role}</h3>
+                  <p class="company">{e.company} · <span class="muted">{e.location}</span></p>
+                </div>
+                <span class="period">{e.period}</span>
+              </div>
+              <ul class="points">
+                {e.points.map((p) => <li>{p}</li>)}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="grid grid-2 edu">
+        <div class="card pad">
+          <h3>🎓 Education</h3>
+          {
+            education.map((ed) => (
+              <div class="edu-row">
+                <div>
+                  <strong>{ed.school}</strong>
+                  <p class="muted">{ed.degree}{ed.detail && ` · ${ed.detail}`}</p>
+                </div>
+                <span class="period">{ed.period}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="card pad">
+          <h3>🏆 Awards</h3>
+          <ul class="points">
+            {awards.map((a) => <li>{a}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLAGSHIP ============ -->
+  <section id="flagship" class="alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Flagship · internal system</p>
+        <h2 class="section-title">PPIC Smart Planner</h2>
+        <p class="lead">
+          Replaces manual, Excel-based production planning for the Welding area. A 16-step pipeline reads 6 input
+          tables (part master, MDFO forecast, confirmed delivery orders, finished-part stock, working calendar and
+          shift achievement) and produces the daily plan per part per shift. It streams live progress to the browser
+          over Server-Sent Events and ends with stock rolling, achievement analysis and delivery-miss alerts.
+        </p>
+        <ul class="tags">
+          <li class="tag">CodeIgniter 3</li><li class="tag">Vue 3</li><li class="tag">MySQL 5.7</li><li class="tag">Server-Sent Events</li>
+        </ul>
+      </div>
+      <div class="grid grid-2 shots">
+        <figure class="card">
+          <a href="/images/ppic/pipeline-source.png" target="_blank" rel="noopener"><img src="/images/ppic/pipeline-source.png" alt="Pipeline data sources: six input tables merged into the mutasi_weld planning output" loading="lazy" /></a>
+          <figcaption>6 input tables → 1 planning output (<code>mutasi_weld</code>)</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="/images/ppic/pipeline-steps.png" target="_blank" rel="noopener"><img class="natural" src="/images/ppic/pipeline-steps.png" alt="The 16 pipeline steps with live counters from a real run" loading="lazy" /></a>
+          <figcaption>16 steps with live counters from a real run</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Projects</p>
+        <h2 class="section-title">Selected work</h2>
+        <p class="lead">Each case study is rendered straight from the project's README on GitHub, so it always matches the code.</p>
+      </div>
+      <div class="grid grid-3">
+        {
+          projects.map((p) => (
+            <article class="card project-card">
+              <a class="project-link" href={`/projects/${p.slug}/`} aria-label={`${p.title} case study`}></a>
+              <div class="project-top">
+                <span class="emoji" aria-hidden="true">{p.emoji}</span>
+                <span class="category">{p.category}</span>
+              </div>
+              <h3>{p.title}</h3>
+              <p class="muted">{p.summary}</p>
+              <ul class="tags">
+                {p.stack.map((s) => <li class="tag">{s}</li>)}
+              </ul>
+              <div class="project-actions">
+                <span class="read-more">Read case study →</span>
+                <a class="gh" href={`https://github.com/efrino/${p.repo}`} target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <h3 class="sub-title">🔒 Private work</h3>
+      <div class="grid grid-2">
+        {
+          privateWork.map((w) => (
+            <div class="card pad">
+              <h3>{w.title}</h3>
+              <p class="muted">{w.text}</p>
+              <ul class="tags">
+                {w.stack.map((s) => <li class="tag">{s}</li>)}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Skills</p>
+        <h2 class="section-title">Tech I work with</h2>
+      </div>
+      <div class="grid grid-2">
+        {
+          skills.map((g) => (
+            <div class="card pad">
+              <h3>{g.group}</h3>
+              <ul class="tags">
+                {g.items.map((s) => <li class="tag">{s}</li>)}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="container">
+      <div class="card contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 class="section-title">Let's build something together</h2>
+          <p class="lead">
+            Open to new opportunities and freelance projects in industrial digitalization, full-stack web and mobile development. Email is the fastest way to reach me.
+          </p>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href={`mailto:${profile.email}`}>{profile.email}</a>
+          <a class="btn" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href={profile.github} target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: 72px 0 56px;
+    background:
+      radial-gradient(800px 400px at 85% -10%, var(--accent-soft), transparent 70%),
+      radial-gradient(600px 300px at -10% 110%, var(--accent-soft), transparent 70%);
+  }
+  .hero-grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .hero-grid {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+  .hero-title {
+    font-size: clamp(34px, 6vw, 56px);
+    margin: 0 0 18px;
+    font-weight: 800;
+  }
+  .gradient {
+    font-size: 0.55em;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ok);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent);
+  }
+  .stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .stat {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat strong {
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  .stat span {
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+
+  section.alt {
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .pad {
+    padding: 22px;
+  }
+  .pad h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+  }
+  .muted {
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: grid;
+    gap: 16px;
+  }
+  .tl-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .company {
+    margin: 0;
+    font-weight: 600;
+  }
+  .period {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .points {
+    margin: 12px 0 0;
+    padding-left: 20px;
+  }
+  .points li + li {
+    margin-top: 6px;
+  }
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 12px;
+  }
+  .edu-row + .edu-row {
+    border-top: 1px solid var(--border);
+  }
+  .edu-row p {
+    margin: 2px 0 12px;
+  }
+
+  .shots figure {
+    margin: 0;
+    overflow: hidden;
+  }
+  .shots img {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    object-position: top;
+    background: #fff;
+  }
+  .shots img.natural {
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .shots a {
+    display: block;
+    background: #fff;
+  }
+  .shots figcaption {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+  .section-head .tags {
+    margin-top: 16px;
+  }
+
+  .project-card {
+    position: relative;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .project-card h3 {
+    margin: 0;
+    font-size: 20px;
+  }
+  .project-card .muted {
+    margin: 0;
+    flex: 1;
+  }
+  .project-link {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    z-index: 1;
+  }
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .emoji {
+    font-size: 28px;
+  }
+  .category {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+  }
+  .project-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+  }
+  .read-more {
+    color: var(--accent);
+  }
+  .gh {
+    position: relative;
+    z-index: 2;
+    color: var(--muted);
+  }
+  .sub-title {
+    margin: 48px 0 16px;
+    font-size: 20px;
+  }
+
+  .contact {
+    padding: 32px;
+    display: grid;
+    gap: 16px;
+    background:
+      radial-gradient(500px 240px at 100% 0%, var(--accent-soft), transparent 70%),
+      var(--surface);
+  }
+  @media (min-width: 720px) {
+    .contact {
+      padding: 48px;
+    }
+  }
+</style>
